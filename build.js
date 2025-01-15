@@ -1,29 +1,38 @@
+require('dotenv').config({ path: '.env.production' });
 const fs = require('fs-extra');
 const path = require('path');
-const { marked } = require('marked');
-const frontMatter = require('front-matter');
 
-async function buildSite() {
+async function build() {
+    console.log('Starting build process...');
+    
     try {
-        // Clean and create build directory
-        await fs.emptyDir('build');
+        // Clear dist directory
+        await fs.emptyDir('dist');
+        console.log('Cleared dist directory');
+
+        // Copy all files from src to dist
+        await fs.copy('src', 'dist');
+        console.log('Copied src to dist');
         
-        // Copy static assets
-        await fs.copy('css', 'build/css');
-        if (fs.existsSync('public')) {
-            await fs.copy('public', 'build/public');
-        }
-        
-        // Copy index.html to build directory
-        if (fs.existsSync('index.html')) {
-            await fs.copy('index.html', 'build/index.html');
-        }
-        
-        console.log('Site built successfully!');
+        // Verify the copy worked
+        const srcIndex = await fs.readFile('src/index.html', 'utf-8');
+        const distIndex = await fs.readFile('dist/index.html', 'utf-8');
+        console.log('Source index.html content:', srcIndex.substring(0, 100));
+        console.log('Dist index.html content:', distIndex.substring(0, 100));
+
+        // Ensure templates directory exists
+        await fs.ensureDir('dist/templates');
+        console.log('Ensured templates directory exists');
+
+        // Ensure blog directory exists
+        await fs.ensureDir('dist/blog');
+        console.log('Ensured blog directory exists');
+
+        console.log('Build completed successfully!');
     } catch (error) {
         console.error('Build failed:', error);
         process.exit(1);
     }
 }
 
-buildSite(); 
+build(); 

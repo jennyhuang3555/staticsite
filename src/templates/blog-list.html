@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Enneagram for Love</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="/" class="logo">Enneagram for Love</a>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog" class="active">Blog</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Enneagram Insights</h1>
+                    <p class="hero-subtitle">Explore our collection of articles about relationships and personal growth</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-section">
+            <div class="container">
+                <div class="blog-filters">
+                    <ul class="nav-categories">
+                        <li><a href="/blog" class="active">All articles</a></li>
+                        <li><a href="/blog?category=relationships">Relationships</a></li>
+                        <li><a href="/blog?category=growth">Personal Growth</a></li>
+                        <li><a href="/blog?category=types">Enneagram Types</a></li>
+                    </ul>
+                </div>
+                <div class="blog-grid">
+                    {{posts}}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Enneagram for Love. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
