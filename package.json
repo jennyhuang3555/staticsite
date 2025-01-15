@@ -7,7 +7,9 @@
     "start": "npm run build && npm run serve",
     "dev": "cross-env NODE_ENV=development nodemon server.js",
     "build": "node build.js",
-    "serve": "serve dist"
+    "serve": "serve dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "express": "^4.21.2",
@@ -19,9 +21,11 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
+    "gh-pages": "^6.3.0",
     "nodemon": "^3.0.2"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://YOUR_USERNAME.github.io/YOUR_REPO_NAME"
 }
